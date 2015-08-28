@@ -16,7 +16,10 @@
 */
     
 L.Rrose = L.Popup.extend({
-
+  options: {
+      y_bounds: 80,
+      x_bounds: 80
+  },
   _initLayout:function () {
     var prefix = 'leaflet-rrose',
       container = this._container = L.DomUtil.create('div', prefix + ' ' + this.options.className + ' leaflet-zoom-animated'),
@@ -31,7 +34,7 @@ L.Rrose = L.Popup.extend({
     }
 
     // Set the pixel distances from the map edges at which popups are too close and need to be re-oriented.
-    var x_bound = 80, y_bound = 80;
+    var x_bound = this.options.x_bounds, y_bound = this.options.y_bounds;
     // Determine the alternate direction to pop up; north mimics Leaflet's default behavior, so we initialize to that.
     this.options.position = 'n';
     // Then see if the point is too far north...
